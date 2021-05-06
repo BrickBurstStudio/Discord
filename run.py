@@ -3,7 +3,7 @@ import sys
 import settings
 import discord
 import message_handler
-import settings
+
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from events.base_event import BaseEvent
 from events import *
@@ -99,7 +99,7 @@ def main():
             user_roles_id_after = list(map(return_user_role, after.roles))
             
             if not(settings.ROLES["pro"] in user_roles_id_before) and (settings.ROLES["pro"] in user_roles_id_after):
-                await after.send(f"Thank you for purchasing Revival Pro. The next step to setting up your account is by creating your account by typing `{settings.COMMAND_PREFIX}!create`. If you have any questions please open up a support ticket and staff will be happy to help you.")
+                await after.send("Thank you for purchasing Revival Pro. The next step to setting up your account is by creating your account by typing `r!create`. If you have any questions please open up a support ticket and staff will be happy to help you.")
 
     # Finally, set the bot running
     client.run(settings.BOT_TOKEN)

