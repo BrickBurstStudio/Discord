@@ -17,5 +17,15 @@ DB_URL = "https://099e06aa8985.ngrok.io"
 WEBSITE = "https://revivalexploit.com"
 
 ROLES = {
-    "pro":838286161029365792,
+    "boost"                     : 709793510181830688,
+    "blacklisted"               : 770700918110027776,
+    "owner"                     : 709188117181104239,
+    "mod"                       : 821781075364675584,
+    "premium_plus_and_premium"  : 830658549180923944,
+    "premium_plus"              : 821563791627386881,
+    "premium"                   : 754874982999261244,
+    "standard"                  : 820752869141512192,
+    "basic"                     : 754874930667192442,
+    "trial"                     : 821563230249025606,
+    "pro"                       : 838286161029365792,
 }
