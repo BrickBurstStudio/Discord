@@ -36,6 +36,7 @@ class Create(BaseCommand):
 
                     password = await client.wait_for("message", check=check, timeout=600.0)
                     password = password.content
+                    print(password)
                     log += f"*you really thought you can see their passwords lol*\n"
 
                     msg = "Please enter an email address: *(this is going to be used for when reseting your password)*\n"
@@ -79,8 +80,8 @@ class Create(BaseCommand):
                         msg = f"Thank you for creating a Revival Pro account. Please login by visiting {settings.WEBSITE}/login If you have any questions or messed up any of your login information, please open a support ticket and staff will help you"
                         await message.channel.send(msg)
                         log += msg
-                        with open("users.txt", "a") as a:
-                            a.write(f"{message.author.id}\n")
+                        # with open("users.txt", "a") as a:
+                        #     a.write(f"{message.author.id}\n")
                         
                     elif response.status_code == 400:
                         msg = f"Oops it looks like the username you have chosen is already taken. Type {settings.COMMAND_PREFIX}create if you would like to choose a diffrent username"

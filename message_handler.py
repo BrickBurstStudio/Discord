@@ -15,7 +15,7 @@ async def handle_command(command, args, message, bot_client):
     if command not in COMMAND_HANDLERS:
         return
 
-    print(f"{message.author.id}: {settings.COMMAND_PREFIX}{command} " + " ".join(args))
+    print(f"{message.author}: {settings.COMMAND_PREFIX}{command} " + " ".join(args))
     msg = f"<@!{message.author.id}>: {settings.COMMAND_PREFIX}{command} " + " ".join(
         args
     )

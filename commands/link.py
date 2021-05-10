@@ -45,7 +45,7 @@ class Link(BaseCommand):
             
         elif response.status_code != 400:
             data = {
-                "sessionID": response.json()["sessionID"],
+                "sessionid": response.json()["sessionid"],
                 "newDiscord": message.author.id
             }
             res = req.patch("http://72.193.196.156:6969/users/link", data=data)
