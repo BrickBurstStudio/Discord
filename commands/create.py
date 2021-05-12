@@ -97,7 +97,7 @@ class Create(BaseCommand):
                     await message.channel.send(response.text)
                     log = msg
             else:
-                msg = f"It looks like you already have created a Revival Pro account. If you think this is a mistake please make a support ticket and staff will help you. If you would like to change your password visit {settings.DB_URL}/forgot."
+                msg = f"It looks like you already have created a Revival Pro account. If you think this is a mistake please make a support ticket and staff will help you. If you would like to change your password visit {settings.WEBSITE}/forgot."
                 await message.channel.send(msg)
                 log = msg
             
