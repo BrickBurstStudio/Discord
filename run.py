@@ -85,9 +85,15 @@ def main():
                 print("Error while handling message", flush=True)
                 raise
 
+    async def file_upload(message):
+        text = message.content
+        print(text)
+
     @client.event
     async def on_message(message):
         await common_handle_message(message)
+        await file_upload(message)
+
 
     @client.event
     async def on_message_edit(before, after):
