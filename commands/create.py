@@ -79,8 +79,8 @@ class Create(BaseCommand):
                         msg = f"Thank you for creating a Revival Pro account. Please login by visiting {settings.WEBSITE}/login If you have any questions or messed up any of your login information, please open a support ticket and staff will help you"
                         await message.channel.send(msg)
                         log += msg
-                        # with open("users.txt", "a") as a:
-                        #     a.write(f"{message.author.id}\n")
+                        with open("users.txt", "a") as a:
+                            a.write(f"{message.author.id}\n")
                         
                     elif response.status_code == 400:
                         msg = f"Oops it looks like the username you have chosen is already taken. Type {settings.COMMAND_PREFIX}create if you would like to choose a diffrent username"
