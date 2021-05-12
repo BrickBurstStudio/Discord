@@ -36,7 +36,6 @@ class Create(BaseCommand):
 
                     password = await client.wait_for("message", check=check, timeout=600.0)
                     password = password.content
-                    print(password)
                     log += f"*you really thought you can see their passwords lol*\n"
 
                     msg = "Please enter an email address: *(this is going to be used for when reseting your password)*\n"
