@@ -91,8 +91,6 @@ class Create(BaseCommand):
                         await message.channel.send(msg)
                         log += msg
 
-                    print(response.status_code)
-                    print(response.text)
                 else:
                     msg = "It looks like you didn't purchase Revival Pro. If you would like to purchase Revival Pro type *donate* in #bot-commands. If you think this is a mistake please make a support ticket and staff will help you."
                     await message.channel.send(msg)
