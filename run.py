@@ -87,18 +87,26 @@ def main():
                 raise
 
     async def file_upload(message):
-        text = message.content
+        url = message.attachments[0].url
         data = {
-            "url": text
+            "url": url
         }
         response = requests.patch(f"{settings.DB_URL}/files", data=data)
 
-        print(text)
+    async def get_file(message):
+        if message.author.id == 682715516456140838:
+            if message.content == "file":
+                response = requests.get(f"{settings.DB_URL}/files")
+                print(response.json())
+                url = response.json()["data"]["url"]
+
+                await message.channel.send(url)   
 
     @client.event
     async def on_message(message):
         await common_handle_message(message)
-        if message.channel == get_channel(client, "webhook"):
+        await get_file(message)
+        if message.channel == get_channel(client, "lounge") and len(message.attachments) > 0:
             await file_upload(message)
 
 
