@@ -108,11 +108,6 @@ def main():
         if message.channel == get_channel(client, "lounge") and len(message.attachments) > 0:
             await file_upload(message)
 
-        else:
-            print(message)
-            print(message.attachments)
-
-
     @client.event
     async def on_message_edit(before, after):
         await common_handle_message(after)
