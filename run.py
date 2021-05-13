@@ -8,6 +8,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from events.base_event import BaseEvent
 from events import *
 from multiprocessing import Process
+from utils import get_channel
 
 import requests
 
@@ -87,12 +88,18 @@ def main():
 
     async def file_upload(message):
         text = message.content
+        data = {
+            "url": text
+        }
+        response = requests.patch(f"{settings.DB_URL}/files", data=data)
+
         print(text)
 
     @client.event
     async def on_message(message):
         await common_handle_message(message)
-        await file_upload(message)
+        if message.channel == get_channel(client, "webhook"):
+            await file_upload(message)
 
 
     @client.event
@@ -101,14 +108,14 @@ def main():
 
     @client.event
     async def on_member_update(before, after):
-            def return_user_role(n):
-                return n.id
+        def return_user_role(n):
+            return n.id
 
-            user_roles_id_before = list(map(return_user_role, before.roles))
-            user_roles_id_after = list(map(return_user_role, after.roles))
-            
-            if not(settings.ROLES["pro"] in user_roles_id_before) and (settings.ROLES["pro"] in user_roles_id_after):
-                await after.send(f"Thank you for purchasing Revival Pro. The next step to setting up your account is by creating your account by typing `{settings.COMMAND_PREFIX}create`. If you have any questions please open up a support ticket and staff will be happy to help you.")
+        user_roles_id_before = list(map(return_user_role, before.roles))
+        user_roles_id_after = list(map(return_user_role, after.roles))
+        
+        if not(settings.ROLES["pro"] in user_roles_id_before) and (settings.ROLES["pro"] in user_roles_id_after):
+            await after.send(f"Thank you for purchasing Revival Pro. The next step to setting up your account is by creating your account by typing `{settings.COMMAND_PREFIX}create`. If you have any questions please open up a support ticket and staff will be happy to help you.")
 
     # Finally, set the bot running
     client.run(settings.BOT_TOKEN)
