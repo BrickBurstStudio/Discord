@@ -35,5 +35,3 @@ class CheckVersion(BaseEvent):
                 print(latest_version)
 
 
-
-            
