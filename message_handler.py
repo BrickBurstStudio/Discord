@@ -21,7 +21,7 @@ async def handle_command(command, args, message, bot_client):
     )
 
     revival = bot_client.guilds[0]
-    await revival.get_channel(822568003056828437).send(msg)
+    await revival.get_channel(settings.LOGS).send(msg)
 
     def return_user_role(n):
         return n.id

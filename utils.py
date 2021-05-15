@@ -49,8 +49,8 @@ async def send_in_channel(client, channel_name, *args):
 
 
 async def log(client, msg):
-    await client.guilds[0].get_channel(822568003056828437).send(msg)
-    await client.guilds[0].get_channel(822568003056828437).send(
+    await client.guilds[0].get_channel(settings.LOGS).send(msg)
+    await client.guilds[0].get_channel(settings.LOGS).send(
         "---------------------------------------------------------------------------------------------------------------------"
     )
 
