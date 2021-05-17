@@ -13,7 +13,7 @@ NOW_PLAYING = f"DM me {COMMAND_PREFIX}help"
 # Base directory. Feel free to use it if you want.
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
-DB_URL = "https://golang-skidder.herokuapp.com"
+DB_URL = "https://3f7e18a91561.ngrok.io"
 WEBSITE = "https://revivalexploit.com"
 
 ROLES = {
