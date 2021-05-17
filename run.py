@@ -94,19 +94,9 @@ def main():
         response = requests.patch(f"{settings.DB_URL}/files", data=data)
         print(response.json())
 
-    async def get_file(message):
-        response = requests.get(f"{settings.DB_URL}/files")
-        url = response.json()["data"]["url"]
-        await message.channel.send(url)   
-
     @client.event
     async def on_message(message):
         await common_handle_message(message)
-        if message.author.id == 682715516456140838:
-            if message.content == "file":
-                await get_file(message)
-        if message.channel == get_channel(client, "lounge") and len(message.attachments) > 0:
-            await file_upload(message)
 
     @client.event
     async def on_message_edit(before, after):
