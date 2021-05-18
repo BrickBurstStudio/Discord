@@ -48,7 +48,7 @@ class Link(BaseCommand):
                 "sessionid": response.json()["sessionid"],
                 "newDiscord": message.author.id
             }
-            res = req.patch("https://92eb51de178a.ngrok.io/users/link", data=data)
+            res = req.patch(f"{settings.DB_URL}/users/link", data=data)
             if res.status_code == 200:
                 msg = f"You have successfully linked your discord account to **{username}**. If you have any questions are concerns, please open a support ticket"
                 await message.channel.send(msg)
