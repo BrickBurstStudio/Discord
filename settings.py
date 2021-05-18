@@ -2,7 +2,7 @@ import os
 import bot_token
 
 # The prefix that will be used to parse commands.
-COMMAND_PREFIX = "e!"
+COMMAND_PREFIX = "!"
 
 # The bot token. Keep this secret!
 BOT_TOKEN = bot_token.BOT_TOKEN
