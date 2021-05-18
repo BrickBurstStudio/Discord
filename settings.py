@@ -14,7 +14,6 @@ NOW_PLAYING = f"DM me {COMMAND_PREFIX}help"
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 DB_URL = "https://92eb51de178a.ngrok.io"
-# DB_URL = "http://localhost:6969"
 WEBSITE = "https://revivalexploit.com"
 
 ROLES = {
