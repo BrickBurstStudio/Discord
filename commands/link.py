@@ -39,7 +39,7 @@ class Link(BaseCommand):
 
         response = req.post(f"{settings.DB_URL}/users/login", data)
         if response.status_code != 200:
-            msg = f"Oops it looks like the password for **{username}** is incorrect. If you are the owner of this account and forgot your password visit {settings.WEBSITE}/forgot"
+            msg = f"Oops it looks like the password for **{username}** is incorrect, or **{username}** does not exist. If you are the owner of this account and forgot your password visit {settings.WEBSITE}/forgot"
             await message.channel.send(msg)
             log += msg
             
