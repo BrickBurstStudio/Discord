@@ -11,6 +11,7 @@ class Verify(BaseCommand):
         super().__init__(description, params)
 
     async def handle(self, params, message, client):
+        print("Hello, World!")
         # username = params[0]
         # user_id = message.author.id
 
