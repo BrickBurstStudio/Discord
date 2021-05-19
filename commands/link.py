@@ -38,25 +38,26 @@ class Link(BaseCommand):
         }
 
         response = req.post(f"{settings.DB_URL}/users/login", data)
-        if response.status_code != 200:
-            msg = f"Oops it looks like the password for **{username}** is incorrect, or **{username}** does not exist. If you are the owner of this account and forgot your password visit {settings.WEBSITE}/forgot"
-            await message.channel.send(msg)
-            log += msg
+        if response.status_code == 200:
+            if response.json()["code"] == 400:
+                msg = f"Oops it looks like the password for **{username}** is incorrect, or **{username}** does not exist. If you are the owner of this account and forgot your password visit {settings.WEBSITE}/forgot"
+                await message.channel.send(msg)
+                log += msg
             
-        elif response.status_code != 400:
-            data = {
-                "sessionid": response.json()["sessionid"],
-                "newDiscord": message.author.id
-            }
-            res = req.patch(f"{settings.DB_URL}/users/link", data=data)
-            if res.status_code == 200:
-                msg = f"You have successfully linked your discord account to **{username}**. If you have any questions are concerns, please open a support ticket"
-                await message.channel.send(msg)
-                log += msg
-            elif res.status_code == 500:
-                msg = "Oops it looks like your account was not linked. This is most likely because revival servers are currently down. If you do not think this is the problem and think it might be a diffrent problem please open up a support ticket."
-                await message.channel.send(msg)
-                log += msg
+            elif response.status_code == 200:
+                data = {
+                    "sessionid": response.json()["sessionid"],
+                    "newDiscord": message.author.id
+                }
+                res = req.patch(f"{settings.DB_URL}/users/link", data=data)
+                if res.status_code == 200:
+                    msg = f"You have successfully linked your discord account to **{username}**. If you have any questions are concerns, please open a support ticket"
+                    await message.channel.send(msg)
+                    log += msg
+                elif res.status_code == 500:
+                    msg = "Oops it looks like your account was not linked. This is most likely because revival servers are currently down. If you do not think this is the problem and think it might be a diffrent problem please open up a support ticket."
+                    await message.channel.send(msg)
+                    log += msg
         else:
             msg = "Oops it looks like your account was not linked. This is most likely because revival servers are currently down. If you do not think this is the problem and think it might be a diffrent problem please open up a support ticket."
             await message.channel.send(msg)
