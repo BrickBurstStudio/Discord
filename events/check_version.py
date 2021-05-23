@@ -23,11 +23,11 @@ class CheckVersion(BaseEvent):
             else:
                 channel = get_channel(client, "📣｜announcements")
                 msg = client.guilds[0].default_role
-                await channel.send(msg)
+                # await channel.send(msg)
                 embedVar = discord.Embed(title="**New Roblox Version Detected**", color=0x10b1fe, description="This means that revival and all other exploits will be temporally patched as we need to update our custom api. This shouldn't take long to update")
                 embedVar.add_field(name="Old Version", value=f"`{version}`", inline=True)
                 embedVar.add_field(name="New Version", value=f"`{latest_version}`", inline=True)
-                await channel.send(embed=embedVar)
+                # await channel.send(embed=embedVar)
                 with open("version.txt", "w") as j:
                     j.write(latest_version)
 

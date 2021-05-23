@@ -86,13 +86,13 @@ def main():
                 print("Error while handling message", flush=True)
                 raise
 
-    async def file_upload(message):
-        url = message.attachments[0].url
-        data = {
-            "url": url
-        }
-        response = requests.patch(f"{settings.DB_URL}/files", data=data)
-        print(response.json())
+    # async def file_upload(message):
+    #     url = message.attachments[0].url
+    #     data = {
+    #         "url": url
+    #     }
+    #     response = requests.patch(f"{settings.DB_URL}/files", data=data)
+    #     print(response.json())
 
     @client.event
     async def on_message(message):
